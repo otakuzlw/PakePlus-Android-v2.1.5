@@ -1,11 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>PakePlus</title>
-    </head>
-    <body>
-        PakePlus
-    </body>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>风格转换</title>
+  <link rel="icon" href="data:," />
+  <meta name="api-base" content="" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <p id="apiWarn" class="banner hidden"></p>
+
+  <section class="card">
+    <label class="label">Python 服务器地址（PakePlus 必填）</label>
+    <input id="apiBase" type="text" placeholder="http://192.168.1.100:8000（电脑 IP，非 127.0.0.1:3358）" />
+    <button type="button" id="btnPing" class="btn secondary">检测连接</button>
+    <p id="pingMsg" class="hint"></p>
+  </section>
+
+  <section class="card">
+    <label class="label">上传图片（1 张）</label>
+    <input id="fileInput" type="file" accept="image/*" capture="environment" />
+    <div id="previewWrap" class="preview hidden">
+      <img id="previewImg" alt="预览" />
+    </div>
+    <p id="uploadMsg" class="hint"></p>
+  </section>
+
+  <section class="card">
+    <label class="label" for="prompt">编辑描述</label>
+    <textarea id="prompt" rows="4" placeholder=""></textarea>
+    <button type="button" id="btnGenerate" class="btn primary" disabled>开始生成</button>
+    <p id="genMsg" class="hint"></p>
+  </section>
+
+  <section class="card hidden" id="resultSection">
+    <h2>生成结果</h2>
+    <div id="resultImages"></div>
+    <button type="button" id="btnPrint" class="btn primary">打印（前端占位）</button>
+    <p class="hint">打印逻辑在 <code>app.js</code> 的 <code>printImage()</code>，请按你的打印机 SDK 修改。</p>
+  </section>
+
+  <footer>
+    <p>任务状态：<span id="statusText">空闲</span></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
 </html>
